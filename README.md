@@ -31,11 +31,12 @@ The basic concept:
 * TaleWorlds has structured most game code using abstract classes and default implementations
 * One example of this paradigm is the `SmithingModel` and `DefaultSmithingModel`, respectively
 * Standard inheritance + override development flow allows changing game behavior
+* Class-level override is the finest-grained mod multiplexing the game supports, so any two mods that change the same class must have a module dependency + class inheritance relationship or will conflict.
 
 Loading code:
 
 * To hook a module into the game a SubModule class is specified in `SubModule.xml`
-* The SubModule class is responsible for loading all other classes
+* The SubModule class is responsible for loading all other modded classes
 * See `MBSubModuleBase` for all of the hooks available for loading classes
 * See `SandBoxManager` for an example of concrete code for loading classes
 
@@ -43,5 +44,5 @@ Loading order and override:
 
 * The game maintains a big list of models and this is searched when inserting new models
 * Load order is determined by module depencies
-* If dependencie are accurate, loading models is automagic
+* If dependencies are accurate, loading models is automagic
   * By simply adding a subclass of a default model after the default model the game will find the subclass and overriden behaviors will be used in game
