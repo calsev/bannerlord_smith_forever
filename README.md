@@ -9,7 +9,7 @@ Once built, the SmithForever directory can be copied to the Bannerlord module di
 
 # Development
 
-Until Taleworlds releases mod tools, development is a bit hacky and involves inspection of decompiled code.
+Until TaleWorlds releases mod tools, development is a bit hacky and involves inspection of decompiled code.
 
 Some tools:
 
@@ -24,3 +24,15 @@ Workflows that may prove useful:
 Where to start:
 
 * For single-player, lots of logic of interest is compiled in TaleWorlds.CampaignSystem.dll
+* Specifically, TaleWorlds.CampaignSystem.Sandbox.GameComponents and TaleWorlds.CampaignSystem.Sandbox.GameComponents.Map contain lots of classes that permit changing balance.
+
+The basic concept:
+
+* TaleWorlds has structured most game code using abstract classes and default implementations
+* One example of this paradigm is the SmithingModel and DefaultSmithingModel, respectively
+* Standard inheritance + override development flow allows changing game behavior
+* To hook a module into the game a SubModule class is specified in the SubModule.xml
+* The SubModule class is responsible for loading all other classes.
+* See MBSubModuleBase for all of the hooks available for loading classes.
+* See SandBoxManager for an example of concrete code for loading classes.
+* Loading models is automagic, so by simply adding a subclass of a default model the overriden behaviors will be used in game.
