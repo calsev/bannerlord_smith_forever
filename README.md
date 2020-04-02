@@ -56,7 +56,7 @@ Until TaleWorlds releases mod tools, development is a bit hacky and involves ins
 ## Mod conflicts
 
 * Class-level override is the finest-grained mod multiplexing the game supports, so any two mods that change the same class must have a module dependency + class inheritance relationship or will conflict
-  * One example of the granualrity of a model is SmithingModel, where time costs, skill effects, and material requirements are defined in the same model, so a compilation mod or mod dependecy is required to mod these
+  * One example of the granualrity of a model is SmithingModel, where time costs, skill effects, and material requirements are defined in the same model, so a compilation mod or mod dependency is required to mod all of these
   * A example of different granularity is progression, where age, skill, and renown are handled independently in AgeModel, CharacterDevelopmentModel, and ClanTierModel
 * Given the inconsistent granularty of classes, it is advisable to list the classes overridden in a mod description so users can know definitively what mods conflict
   * This can also aid creation of compilation mods
