@@ -1,0 +1,8 @@
+
+# User
+.vs/*
+
+# Binaries
+bin/*
+obj/*
+SmithForever/bin/*
