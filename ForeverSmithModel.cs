@@ -15,5 +15,10 @@ namespace SmithForever
 		{
 			return 0;
 		}
+
+		public override int GetEnergyCostForSmelting(ItemObject item, Hero hero)
+		{
+			return 0;
+		}
 	}
 }
