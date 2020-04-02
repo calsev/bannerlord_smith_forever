@@ -1,7 +1,11 @@
 
 # Purpose
 
-This mod eliminates the "energy" cost for both 
+This mod eliminates the "energy" cost for Refining, Smelting, and Smithing so these actions can be taken as long as materials are available.
+
+# Installation
+
+Once built, the SmithForever directory can be copied to the Bannerlord module directory (C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules).
 
 # Development
 
