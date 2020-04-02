@@ -20,18 +20,23 @@ Workflows that may prove useful:
 
 * Adding all of the DLLs in the game directory as references makes searching the entire code base possible (`C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.*.dll`)
 * Once a promising class is found, the 'source' can be recovered by opening the DLL in dotPeek
+  * Decompiled code will not have comments and will include compiler-generated code like empty constructors that can be deleted
 
 Where to start:
 
 * For single-player, lots of logic of interest is compiled in `TaleWorlds.CampaignSystem.dll`
-* Specifically, `TaleWorlds.CampaignSystem.Sandbox.GameComponents` and `TaleWorlds.CampaignSystem.Sandbox.GameComponents.Map` contain lots of classes that permit changing balance.
+* Specifically, `TaleWorlds.CampaignSystem.Sandbox.GameComponents` and `TaleWorlds.CampaignSystem.Sandbox.GameComponents.Map` contain lots of classes that permit changing balance
 
 The basic concept:
 
 * TaleWorlds has structured most game code using abstract classes and default implementations
 * One example of this paradigm is the `SmithingModel` and `DefaultSmithingModel`, respectively
 * Standard inheritance + override development flow allows changing game behavior
-* Class-level override is the finest-grained mod multiplexing the game supports, so any two mods that change the same class must have a module dependency + class inheritance relationship or will conflict.
+* Class-level override is the finest-grained mod multiplexing the game supports, so any two mods that change the same class must have a module dependency + class inheritance relationship or will conflict
+  * One example of the granualrity of a model is SmithingModel, where time costs, skill effects, and material requirements are defined in the same model, so a compilation mod or mod dependecy is required to mod these
+  * A example of different granularity is progression, where age, skill, and renown are handled independently in AgeModel, CharacterDevelopmentModel, and ClanTierModel
+* It is advisable to list the classes overridden in a mod description so users can know definitively what mods conflict
+  * This can also aid creation of compilation mods
 
 Loading code:
 
