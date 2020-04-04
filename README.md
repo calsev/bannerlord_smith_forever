@@ -23,8 +23,10 @@ Until TaleWorlds releases mod tools, development is a bit hacky and involves ins
 ## Workflows that may prove useful
 
 * Adding all of the DLLs in the game directory as references makes searching the entire code base possible (`C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.*.dll`)
+* Adding all DLLs for the sandbox module is also useful for single-player mods (`C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\*.dll`)
 * Once a promising class is found, the 'source' can be recovered by opening the DLL in dotPeek
   * Decompiled code will not have comments and will include compiler-generated code like empty constructors that can be deleted
+  * The paid JetBrains ReSharper integrated with VisualStudio for easy browsing of DLLs
 
 ## Where to start looking
 
