@@ -28,8 +28,19 @@ Until TaleWorlds releases mod tools, development is a bit hacky and involves ins
 
 ## Where to start looking
 
+Taleworlds followed a `behavior`-`model` paradigm with the achitecture. This separates the responsibilties of the code more-or-less into mechanism and policy, respectively.
+
+* Behaviors are responsible for doing things, like starting and stopping tournaments or unlocking new crafting parts, for example
+* Models are responsible for deciding when, how frequently, how fast, etc. to do things
+
+For light modding of balance and to affect existing behaviors, it is probably best to start with modding models.
+
 * For single-player, lots of logic of interest is compiled in `TaleWorlds.CampaignSystem.dll`
 * Specifically, `TaleWorlds.CampaignSystem.Sandbox.GameComponents` and `TaleWorlds.CampaignSystem.Sandbox.GameComponents.Map` contain lots of classes that permit changing balance
+
+To foundationally change what can happen in the game, behaviors must be changed. The behaviors for each game mode are loaded by that module, so the fastest way to get started finding what behaviors to modify may be to look at the submodule class for a game mode.
+
+* For the sandbox campaign the module class is specified as `Sandbox.SandBoxSubModule` in `Modules\SandBox\SubModule.xml` and can be found in `Modules\SandBox\bin\Win64_Shipping_Client\Sandbox.ddl`
 
 ## How modules work
 
