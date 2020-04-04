@@ -26,11 +26,11 @@ Until TaleWorlds releases mod tools, development is a bit hacky and involves ins
 * Adding all DLLs for the sandbox module is also useful for single-player mods (`C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\*.dll`)
 * Once a promising class is found, the 'source' can be recovered by opening the DLL in dotPeek
   * Decompiled code will not have comments and will include compiler-generated code like empty constructors that can be deleted
-  * The paid JetBrains ReSharper integrated with VisualStudio for easy browsing of DLLs
+  * The paid JetBrains ReSharper integrates with VisualStudio for easy browsing of DLLs
 
 ## Where to start looking
 
-Like Warband, Bannerlord is not very data-driven. There are a minimal number of XML files within each `Module\*\ModuleData\`. For very limited cases like changing party sizes or campanion skills it is possible to make a text-only mod. The vast majority of modding will require coding in C#.
+Like Warband, Bannerlord is not very data-driven. There are a minimal number of XML files within each `Module\*\ModuleData\`. For very limited cases, like changing party sizes or campanion skills, it is possible to make a text-only mod. The vast majority of modding will require coding in C#.
 
 Taleworlds followed a `behavior`-`model` paradigm with the achitecture. This separates the responsibilties of the code more-or-less into mechanism and policy, respectively.
 
@@ -44,7 +44,7 @@ For light modding of balance and to affect existing behaviors, it is probably be
 
 To foundationally change what can happen in the game, behaviors must be changed. The behaviors for each game mode are loaded by that module, so the fastest way to get started finding what behaviors to modify may be to look at the submodule class for a game mode.
 
-* For the sandbox campaign the module class is specified as `Sandbox.SandBoxSubModule` in `Modules\SandBox\SubModule.xml` and can be found in `Modules\SandBox\bin\Win64_Shipping_Client\Sandbox.ddl`
+* For the sandbox campaign the module class is specified as `Sandbox.SandBoxSubModule` in `Modules\SandBox\SubModule.xml` and can be found in `Modules\SandBox\bin\Win64_Shipping_Client\Sandbox.dll`
 
 ## How modules work
 
