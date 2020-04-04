@@ -28,6 +28,8 @@ Until TaleWorlds releases mod tools, development is a bit hacky and involves ins
 
 ## Where to start looking
 
+Like Warband, Bannerlord is not very data-driven. There are a minimal number of XML files within each `Module\*\ModuleData\`. For very limited cases like changing party sizes or campanion skills it is possible to make a text-only mod. The vast majority of modding will require coding in C#.
+
 Taleworlds followed a `behavior`-`model` paradigm with the achitecture. This separates the responsibilties of the code more-or-less into mechanism and policy, respectively.
 
 * Behaviors are responsible for doing things, like starting and stopping tournaments or unlocking new crafting parts, for example
@@ -44,7 +46,14 @@ To foundationally change what can happen in the game, behaviors must be changed.
 
 ## How modules work
 
-### Inheritance
+### XML
+
+XML data is hooked into the game using nodes such as `<XmlName id="NPCCharacters" path="companions"/>`. These are emumerated in `Modules\*\Submodule.xml`. See `Modules\Sandbox\SubModule.xml` for many examples.
+
+* The `id` attribute determines the required schema of the data and in what context it is loaded. The effect is similar to what a folder location would indicate in a directory-based data scheme.
+* The `path` attribute specifies the path to the xml file relative to `ModuleData\` and excludes the `.xml` extension.
+
+### Class Inheritance
 
 * TaleWorlds has structured most game code using abstract classes and default implementations
 * One example of this paradigm is the `SmithingModel` and `DefaultSmithingModel`, respectively
