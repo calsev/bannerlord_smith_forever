@@ -1,7 +1,7 @@
 
 # Purpose
 
-This mod eliminates the "energy" cost for Refining, Smelting, and Smithing so these actions can be taken as long as materials are available.
+This mod eliminates the "energy" cost for Refining, Smelting, and Smithing so these actions can be taken as long as materials are available. It is a simple example to demonstrate loading mod code.
 
 Class overrides:
 
