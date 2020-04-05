@@ -9,7 +9,7 @@ Class overrides:
 
 # Installation
 
-Once built, the SmithForever directory can be copied to the Bannerlord module directory (`C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`).
+During post build, the SmithForever directory will be mirrored to the Bannerlord module directory (`C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\SmithForever`). It may be necessary to set the property `GameFolder` if Bannerlord is installed at a non-standard path.
 
 # Development
 

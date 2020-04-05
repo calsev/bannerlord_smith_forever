@@ -215,8 +215,21 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set bin_dir=$(SolutionDir)SmithForever\bin\Win64_Shipping_Client
+    <PostBuildEvent>set "mod_dir=$(SolutionDir)$(ProjectName)"
+set "bin_dir=$(SolutionDir)$(ProjectName)\bin\Win64_Shipping_Client"
+set "module_dir=$(GameFolder)\Modules\$(ProjectName)"
+
+echo mod_dir = "%25mod_dir%25"
+echo bin_dir = "%25bin_dir%25"
+echo module_dir = "%25module_dir%25"
+
+echo Creating DLL directory
 if not exist "%25bin_dir%25" mkdir "%25bin_dir%25"
-move "$(TargetDir)$(ProjectName).dll" "%25bin_dir%25"</PostBuildEvent>
+echo Moving DLL
+move "$(TargetDir)$(ProjectName).dll" "%25bin_dir%25"
+
+echo Copying module: robocopy /mir "%25mod_dir%25" "%25module_dir%25"
+(robocopy /mir "%25mod_dir%25" "%25module_dir%25") ^&amp; if %25errorlevel%25 leq 1 exit 0
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
