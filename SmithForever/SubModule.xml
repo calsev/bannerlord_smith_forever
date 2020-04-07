@@ -7,6 +7,7 @@
   <DependedModules>
     <DependedModule Id="Native" />
     <DependedModule Id="SandBoxCore" />
+    <DependedModule Id="CustomBattle" />
     <DependedModule Id="Sandbox" />
     <DependedModule Id="StoryMode" />
   </DependedModules>
