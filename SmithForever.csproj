@@ -212,7 +212,9 @@
     <None Include="README.md" />
     <None Include="SmithForever\SubModule.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set "mod_dir=$(SolutionDir)$(ProjectName)"
