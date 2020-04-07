@@ -1,7 +1,7 @@
 ﻿<Module>
   <Name value="Smith Forever" />
   <Id value="SmithForever" />
-  <Version value="v1.0.2" />
+  <Version value="v1.0.3" />
   <SingleplayerModule value="true" />
   <MultiplayerModule value="false" />
   <DependedModules>
