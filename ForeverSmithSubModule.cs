@@ -32,7 +32,15 @@ namespace SmithForever
 		protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
 		{
 			if (!(game.GameType is Campaign))
+			{
 				return;
+			}
+			Log.Debug("OnGameStart");
+			AddModels(gameStarterObject);
+		}
+
+		protected virtual void AddModels(IGameStarter gameStarterObject)
+		{
 			gameStarterObject.AddModel(new ForeverSmithModel());
 		}
 	}
