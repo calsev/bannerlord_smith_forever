@@ -1,6 +1,7 @@
 
 # User
 .vs/*
+*.user
 
 # Binaries
 bin/*
