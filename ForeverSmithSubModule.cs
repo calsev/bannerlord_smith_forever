@@ -1,5 +1,7 @@
-﻿using TaleWorlds.CampaignSystem;
 ﻿using System;
+using System.Collections.Generic;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -35,13 +37,48 @@ namespace SmithForever
 			{
 				return;
 			}
-			Log.Debug("OnGameStart");
+			Log.Info("OnGameStart");
 			AddModels(gameStarterObject);
 		}
 
 		protected virtual void AddModels(IGameStarter gameStarterObject)
 		{
-			gameStarterObject.AddModel(new ForeverSmithModel());
+			ReplaceModel<DefaultSmithingModel, ForeverSmithModel>(gameStarterObject);
+		}
+
+		protected void ReplaceModel<TBaseType, TChildType>(IGameStarter gameStarterObject)
+			where TBaseType : GameModel
+			where TChildType : TBaseType
+		{
+			if (!(gameStarterObject.Models is IList<GameModel> models))
+			{
+				Log.Error("Models was not a list");
+				return;
+			}
+
+			bool found = false;
+			for (int index = 0; index < models.Count; ++index)
+			{
+				if (models[index] is TBaseType)
+				{
+					found = true;
+					if (models[index] is TChildType)
+					{
+						Log.Info($"Child model {typeof(TChildType).Name} found, skipping.");
+					}
+					else
+					{
+						Log.Info($"Base model {typeof(TBaseType).Name} found. Replacing with child model {typeof(TChildType).Name}");
+						models[index] = Activator.CreateInstance<TChildType>();
+					}
+				}
+			}
+
+			if (!found)
+			{
+				Log.Info($"Base model {typeof(TBaseType).Name} was not found. Adding child model {typeof(TChildType).Name}");
+				gameStarterObject.AddModel(Activator.CreateInstance<TChildType>());
+			}
 		}
 	}
 }
