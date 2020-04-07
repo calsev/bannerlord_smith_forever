@@ -1,12 +1,13 @@
 ﻿<Module>
   <Name value="Smith Forever" />
   <Id value="SmithForever" />
-  <Version value="v1.0.0" />
+  <Version value="v1.0.3" />
   <SingleplayerModule value="true" />
   <MultiplayerModule value="false" />
   <DependedModules>
     <DependedModule Id="Native" />
     <DependedModule Id="SandBoxCore" />
+    <DependedModule Id="CustomBattle" />
     <DependedModule Id="Sandbox" />
     <DependedModule Id="StoryMode" />
   </DependedModules>

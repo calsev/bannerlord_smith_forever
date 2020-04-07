@@ -1,9 +1,11 @@
 
 # User
 .vs/*
+*.user
 
 # Binaries
 bin/*
 obj/*
+packages/*
 SmithForever/bin/*
 SmithForever.7z
