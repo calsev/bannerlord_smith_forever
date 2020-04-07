@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.CampaignSystem;
+﻿using System;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 

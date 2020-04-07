@@ -38,6 +38,9 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.4.7.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="SandBox">
       <HintPath>$(GameFolder)\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
     </Reference>
@@ -51,7 +54,12 @@
       <HintPath>$(GameFolder)\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.ViewModelCollection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -209,6 +217,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="SmithForever\SubModule.xml" />
   </ItemGroup>
@@ -227,8 +236,12 @@ echo module_dir = "%25module_dir%25"
 
 echo Creating DLL directory
 if not exist "%25bin_dir%25" mkdir "%25bin_dir%25"
-echo Moving DLL
-move "$(TargetDir)$(ProjectName).dll" "%25bin_dir%25"
+
+echo Copying module DLL
+xcopy /y "$(TargetDir)$(ProjectName).dll" "%25bin_dir%25"
+
+echo Copying logging DLL
+xcopy /y "$(SolutionDir)\packages\NLog.4.7.0\lib\netstandard2.0\*" "%25bin_dir%25"
 
 echo Copying module: robocopy /mir "%25mod_dir%25" "%25module_dir%25"
 (robocopy /mir "%25mod_dir%25" "%25module_dir%25") ^&amp; if %25errorlevel%25 leq 1 exit 0
